@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabajo Práctico: ¿Cómo hacer un Plan de Negocios?</title>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #3b82f6;
+            --accent-color: #0d9488;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Estilo tipo portada para el inicio */
+        .cover-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 80vh;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .cover-page {
+                min-height: auto;
+                padding: 10px 0;
+            }
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: var(--primary-color);
+            font-size: 32px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .meta-info {
+            background-color: #f1f5f9;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 6px solid var(--secondary-color);
+        }
+
+        .meta-info p {
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        
+        .meta-info p strong {
+            color: #334155;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 40px 0 20px 0;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 6px;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .intro-box {
+            background-color: #f0fdfa;
+            border: 1px solid #ccfbf1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            word-wrap: break-word;
+        }
+
+        .intro-box h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .summary-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+
+        .summary-box summary {
+            background-color: #dbeafe;
+            color: #1e40af;
+            font-weight: bold;
+        }
+
+        .summary-box .content {
+            background-color: #f8fafc;
+            padding: 20px 25px;
+            word-wrap: break-word;
+        }
+
+        .summary-box .content ul {
+            margin-left: 20px;
+        }
+
+        .summary-box .content li {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .summary-box summary {
+                font-size: 15px;
+                padding: 16px 18px;
+            }
+
+            .summary-box .content {
+                padding: 15px 18px;
+                font-size: 14px;
+            }
+
+            .summary-box .content ul {
+                margin-left: 15px;
+            }
+        }
+
+        .step-list, .content-list {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        .step-list li, .content-list li {
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .step-list li, .content-list li {
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+
+            .step-list, .content-list {
+                margin-left: 15px;
+            }
+
+            .intro-box ul, .summary-box ul, .content ul {
+                margin-left: 15px;
+            }
+        }
+
+        details {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        details[open] {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-color: var(--secondary-color);
+        }
+
+        summary {
+            padding: 18px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary-color);
+            cursor: pointer;
+            user-select: none;
+            outline: none;
+            position: relative;
+            list-style: none;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--secondary-color);
+            transition: transform 0.2s ease;
+        }
+
+        details[open] summary::after {
+            content: '−';
+            transform: translateY(-50%) rotate(180deg);
+            color: var(--accent-color);
+        }
+
+        summary:hover {
+            background-color: #f8fafc;
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid var(--border-color);
+            background-color: #f1f5f9;
+        }
+
+        .content {
+            padding: 20px 25px;
+            background-color: #ffffff;
+            font-size: 15px;
+            color: #334155;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            overflow-wrap: break-word;
+        }
+
+        .content li {
+            margin-bottom: 8px;
+            word-wrap: break-word;
+        }
+
+        .highlight-box {
+            background-color: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 14px;
+        }
+
+        .conclusion-box {
+            margin-top: 30px;
+            background-color: #f8fafc;
+            border: 2px dashed var(--border-color);
+            padding: 25px;
+            border-radius: 10px;
+            word-wrap: break-word;
+        }
+
+        .conclusion-box h2 {
+            color: var(--primary-color);
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 12px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                max-width: 100%;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .header p {
+                font-size: 15px;
+            }
+
+            .meta-info {
+                padding: 15px;
+            }
+
+            .meta-info p {
+                font-size: 14px;
+            }
+
+            .section-divider {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            .section-title {
+                font-size: 18px;
+                margin-top: 25px;
+            }
+
+            .intro-box, .summary-box, .conclusion-box {
+                padding: 15px;
+            }
+
+            summary {
+                padding: 15px;
+                font-size: 15px;
+            }
+
+            .content {
+                padding: 15px;
+                font-size: 14px;
+            }
+
+            .step-list, .content-list {
+                margin-left: 20px;
+            }
+
+            .highlight-box {
+                font-size: 13px;
+                padding: 12px;
+            }
+
+            footer {
+                font-size: 11px;
+                padding-top: 15px;
+            }
+
+            details[open] summary {
+                background-color: #f1f5f9;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+                border-radius: 8px;
+            }
+
+            .header h1 {
+                font-size: 20px;
+            }
+
+            .meta-info {
+                border-left: 4px solid var(--secondary-color);
+            }
+        }
+
+        /* ==========================================
+           REGLAS DE MAQUETACIÓN PARA IMPRESIÓN PDF
+           ========================================== */
+        @media print {
+            body {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+
+            /* Forzar la carátula sola en la primera página */
+            .cover-page {
+                height: 100vh !important;
+                box-sizing: border-box;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                break-after: page !important;
+                page-break-after: always !important;
+            }
+
+            /* Ocultar elementos auxiliares */
+            .summary-box, .section-divider {
+                display: none !important;
+            }
+
+            /* Forzar que la Introducción (Pág 2) empiece en hoja nueva limpia */
+            .force-next-page {
+                break-before: page !important;
+                page-break-before: always !important;
+            }
+
+            /* CONTROL DE APARTADOS: Entran varios por hoja, pero NO se cortan */
+            details.content-details {
+                display: block !important;
+                border: 1px solid #cbd5e1 !important;
+                margin-bottom: 20px !important;
+                
+                /* Quitamos break-before para que no salte uno por página */
+                break-before: auto !important;
+                page-break-before: auto !important;
+                
+                /* REGLA MAESTRA: Si el bloque no entra entero en la hoja, pasa completo a la siguiente */
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+
+            summary {
+                background-color: #f1f5f9 !important;
+                color: #1e3a8a !important;
+                border-bottom: 1px solid #cbd5e1 !important;
+            }
+
+            summary::after {
+                display: none !important; 
+            }
+
+            .content {
+                display: block !important;
+                padding: 20px !important;
+            }
+
+            /* Asegurar que la conclusión tampoco se fracture */
+            .conclusion-box {
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+                border: 1px solid #94a3b8 !important;
+                background-color: #ffffff !important;
+                margin-top: 30px !important;
+            }
+            
+            footer {
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="cover-page">
+        <div class="header">
+            <h1>Trabajo Práctico Parcial</h1>
+            <p>Tema: ¿Cómo hacer un Plan de Negocios? El Plan de Negocios parte por parte</p>
+        </div>
+
+        <div class="meta-info">
+            <p><strong>Integrantes:</strong> Caceres Sergio, Vera nery</p>
+            <p><strong>Materia:</strong> Desarrollo Emprendedor</p>
+            <p><strong>Profesor/a:</strong> Segovia Modesta</p>
+            <p><strong>Fecha de entrega:</strong> 22-06-2026</p>
+        </div>
+    </div>
+
+   <!-- NUEVO DESPLEGABLE: RESUMEN DE LA PRESENTACIÓN Y GUÍA DE EXPOSICIÓN -->
+    <details class="summary-box">
+        <summary>💡 Resumen de la Presentación: ¿Cómo entender este panel?</summary>
+        <div class="content" style="background-color: #f8fafc;">
+            <p>Este panel digital está diseñado específicamente para estructurar nuestra exposición oral de forma clara y lógica, dividiendo el tema en dos bloques principales:</p>
+            <ul>
+                <li><strong>La Diferencia Clave:</strong> 
+                    <ul>
+                        <li><strong>Los Pasos (Parte 1):</strong> Representan la <em>metodología y el camino de investigación</em>. Es el orden cronológico en el que el emprendedor debe analizar la realidad antes de plasmar nada por escrito.</li>
+                        <li><strong>El Plan Parte por Parte (Parte 2):</strong> Representa el <em>documento formal final</em>. Es la estructura final organizada en capítulos listos para presentar ante inversores o entidades bancarias.</li>
+                    </ul>
+                </li>
+                <li><strong>Estructura de la Defensa:</strong>
+                    <ul>
+                        <li><strong>Expositor 1:</strong> Introducción al concepto del Plan de Negocios y defensa metodológica de los 7 pasos clave para validar la viabilidad del emprendimiento.</li>
+                        <li><strong>Expositor 2:</strong> Desglose y análisis técnico de la estructura del documento formal (los 8 bloques operativos esenciales) y formulación de la conclusión general.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <div class="force-next-page">
+        <h2 class="section-title">Introducción</h2>
+        <p style="margin-bottom: 25px; text-align: justify;">
+            En el entorno económico actual, la improvisación constituye uno de los mayores riesgos para el fracaso de los nuevos emprendimientos. Planificar de forma rigurosa y documentada permite transformar las ideas conceptuales en modelos operativos y comerciales viables. Este trabajo práctico analiza la metodología estratégica detrás del desarrollo de un Plan de Negocios eficiente, desglosando los pasos indispensables para su concepción y estructurando detalladamente cada una de las partes fundamentales que lo componen para servir como una hoja de ruta hacia el crecimiento sostenible.
+        </p>
+
+        <div class="section-divider">Parte 1: Fundamentos y Pasos del Plan de Negocios</div>
+
+        <h2 class="section-title">¿Qué es un Plan de Negocios?</h2>
+        <div class="intro-box">
+            <h3>Definición Estratégica</h3>
+            <p>Un Plan de Negocios (PN) es un documento estructurado y organizado que describe de manera clara una idea empresarial, sus objetivos específicos, las estrategias tácticas para alcanzarlos y la totalidad de los recursos necesarios para ponerla en marcha.</p>
+        </div>
+
+        <h2 class="section-title">Pasos para Elaborar un Plan de Negocios</h2>
+        <p style="margin-bottom: 15px;">Para asegurar un análisis sólido que certifique la viabilidad del emprendimiento, es necesario seguir un proceso secuencial estructurado en los siguientes pasos:</p>
+        <ol class="step-list">
+            <li><strong>Definir la idea de negocio:</strong> Establecer el concepto central, el problema a resolver y el valor diferencial que se ofrecerá.</li>
+            <li><strong>Analizar el mercado:</strong> Estudiar exhaustivamente el comportamiento de los clientes, la demanda potencial y la dinámica de los competidores.</li>
+            <li><strong>Establecer objetivos:</strong> Fijar metas de rendimiento claras, medibles y acotadas en el tiempo.</li>
+            <li><strong>Diseñar estrategias:</strong> Planificar los caminos tácticos para comercializar el producto y penetrar el sector.</li>
+            <li><strong>Organizar los recursos:</strong> Determinar y estructurar los activos físicos, la tecnología y el equipo humano.</li>
+            <li><strong>Elaborar el plan financiero:</strong> Traducir todas las decisiones en presupuestos y proyecciones de costos e ingresos.</li>
+            <li><strong>Evaluar riesgos:</strong> Identificar amenazas del entorno para formular soluciones preventivas.</li>
+        </ol>
+    </div>
+
+    <div class="section-divider">Parte 2: El Plan de Negocios Parte por Parte y Cierre</div>
+    
+    <h2 class="section-title">El Plan de Negocios Parte por Parte</h2>
+    <p style="margin-bottom: 15px;">A continuación, se detalla el contenido típico e integral que compone la estructura formal de un plan empresarial, analizando la función crítica de cada bloque operativo:</p>
+
+    <details class="content-details">
+        <summary>1. Resumen Ejecutivo</summary>
+        <div class="content">
+            <p>Constituye la síntesis y carta de presentación formal del proyecto. Aunque se ubica al comienzo de todo documento formal, debe redactarse de manera estricta al finalizar todo el análisis del plan.</p>
+            <ul>
+                <li><strong>Objetivo:</strong> Captar el interés inmediato del lector (socios, bancos, inversores de riesgo) y convencerlo de la viabilidad de la propuesta.</li>
+                <li><strong>Elementos clave:</strong> Definición del modelo de negocio, el problema detectado, la solución provista, la propuesta de valor diferenciada, ventajas competitivas, el perfil del equipo clave y un resumen compacto de las proyecciones financieras e inversión requerida.</li>
+            </ul>
+            <div class="highlight-box">
+                <strong>Consejo Práctico:</strong> No debe exceder las 3 páginas de extensión. Debe ser conciso, persuasivo y reflejar con exactitud la esencia del negocio.
+            </div>
+        </div>
+    </details>
+
+    <details class="content-details">
+        <summary>2. Descripción de la Empresa y Definición Estratégica</summary>
+        <div class="content">
+            <p>En este bloque se sientan las bases conceptuales, filosóficas e institucionales que guiarán el comportamiento de la organización a mediano y largo plazo.</p>
+            <ul>
+                <li><strong>Misión:</strong> Define el propósito actual de la empresa, su razón de ser y el impacto inmediato en su público objetivo.</li>
+                <li><strong>Visión:</strong> Proyecta la situación ideal de la empresa a futuro (ej. a 5 años). Es el espacio para diseñar el porvenir deseado, sin limitarse de forma temprana por restricciones económicas del presente.</li>
+                <li><strong>Valores:</strong> Principios éticos que guían las decisiones comerciales y operativas del equipo de trabajo.</li>
+                <li><strong>Funciones Corporativas Básicas:</strong> Estructuración explícita de las cinco áreas fundamentales que todo proyecto debe prever y coordinar: 1) Producción, 2) Ventas, 3) Marketing, 4) Finanzas y 5) Recursos Humanos.</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="content-details">
+        <summary>3. Análisis de Mercado, Contexto y Sector</summary>
+        <div class="content">
+            <p>Esta sección aporta los datos duros que validan la existencia de una demanda insatisfecha o una oportunidad comercial real.</p>
+            <ul>
+                <li><strong>Tamaño del Mercado:</strong> Estimación cuantitativa del volumen del segmento objetivo, consumo anual y tasas de crecimiento proyectadas.</li>
+                <li><strong>Análisis Competitivo (Ley de Pareto):</strong> Identificación de los líderes de la industria. Por lo general, dos o tres firmas concentran aproximadamente el 80% del mercado. Para auditarlos, se sugiere la técnica del <em>Mystery Buyer</em> (comprador misterioso) para evaluar de forma directa su atención y debilidades.</li>
+                <li><strong>Dinámica del Entorno:</strong> Diagnóstico del estado del ciclo de vida del sector:
+                    <ul>
+                        <li><em>En Crecimiento:</em> Permite una inserción fluida de nuevos actores aprovechando la expansión de la demanda.</li>
+                        <li><em>Estancado:</em> Requiere disputar de forma agresiva los clientes de los líderes del mercado, quienes ya cuentan con ventajas de marca y escala.</li>
+                        <li><em>En Declive:</em> Ofrece oportunidades acotadas basadas en absorber los nichos residuales que abandonan las grandes corporaciones.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="content-details">
+        <summary>4. Plan de Marketing y Comercial</summary>
+        <div class="content">
+            <p>Estructura las acciones tácticas necesarias para posicionar el producto o servicio y generar ingresos bajo supuestos muy rigurosos.</p>
+            <ul>
+                <li><strong>Propuesta de Valor e Interacción:</strong> Delineación de los atributos clave valorados por el cliente. Mapeo no solo del consumidor final, sino también de los <em>influenciadores</em> clave que dictan la tendencia de compra.</li>
+                <li><strong>Canales de Distribución y Conversión:</strong> Definición de cómo llegará el producto al mercado. Si se implementan estrategias digitales, se deben contemplar tasas de conversión realistas y conservadoras (ej. tasas estándar donde el 2% de los impactos publicitarios visita la web y solo el 2% de ellos concreta la transacción).</li>
+                <li><strong>Proyección de Ventas Prudente:</strong> Evitar proyecciones de crecimiento exponencial basadas solo en hojas de cálculo. El plan debe modelar un crecimiento gradual respetando los tiempos del "boca a boca".</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="content-details">
+        <summary>5. Plan Operativo y de Producción</summary>
+        <div class="content">
+            <p>Aborda la viabilidad técnica y logística del proyecto, asegurando que las promesas comerciales se conviertan en procesos repetibles.</p>
+            <ul>
+                <li><strong>Infraestructura y Localización:</strong> Elección estratégica de la planta o local, diseño del diagrama de distribución en planta (layout) y el modelo de adquisición de activos (compra, alquiler o leasing de maquinarias).</li>
+                <li><strong>Mapeo de Procesos (Tiempos Estándar):</strong> Modelado secuencial de cada etapa productiva para estimar con bases de ingeniería la capacidad instalada máxima de la empresa.</li>
+                <li><strong>Suministros y Estacionalidad:</strong> Coordinación de la cadena de proveedores previendo las fluctuaciones temporales de la demanda del mercado.</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="content-details">
+        <summary>6. Organización y Recursos Humanos</summary>
+        <div class="content">
+            <p>Demuestra que los promotores tienen el perfil idóneo para liderar el proyecto hacia los objetivos planteados.</p>
+            <ul>
+                <li><strong>Complementariedad del Equipo:</strong> El equipo fundador ideal debe equilibrar conocimientos técnicos específicos con habilidades comerciales, financieras y de gestión humana.</li>
+                <li><strong>Asignación de Roles por Perfil:</strong> Creación de un organigrama funcional donde cada miembro asuma responsabilidades claras alineadas con su trayectoria profesional y preferencias.</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="content-details">
+        <summary>7. Análisis de Riesgos y Matriz FODA</summary>
+        <div class="content">
+            <p>Herramienta analítica para anticiparse a imprevistos y formalizar respuestas estratégicas.</p>
+            <ul>
+                <li><strong>Matriz FODA Interna y Externa:</strong> Cruce de las Fortalezas y Debilidades de control interno, con las Oportunidades y Amenazas del entorno macroeconómico y competitivo.</li>
+                <li><strong>Evaluación del Riesgo:</strong> Ponderación de factores según su <em>probabilidad de ocurrencia</em> e <em>impacto financiero</em>.</li>
+                <li><strong>Planes de Contingencia:</strong> Diseño de respuestas automáticas estructuradas ante contingencias severas de baja probabilidad pero alto impacto (como trabas aduaneras o quiebre súbito de un proveedor único).</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="content-details">
+        <summary>8. Plan Financiero</summary>
+        <div class="content">
+            <p>Consolidación cuantitativa que dictamina la viabilidad económica y financiera real del modelo propuesto.</p>
+            <p>Debe responder con claridad matemática a seis preguntas esenciales:</p>
+            <ol style="margin-left: 20px; margin-bottom: 15px;">
+                <li>¿Cuánto dinero neto va a ganar la empresa?</li>
+                <li>¿En qué momento preciso se alcanza el punto de equilibrio (comienzo de utilidades)?</li>
+                <li>¿Cuánto capital inicial se requiere estrictamente para la puesta en marcha?</li>
+                <li>¿En cuánto tiempo se recuperará la inversión (Payback)?</li>
+                <li>¿Qué tasa de rentabilidad se obtendrá (TIR / ROI)?</li>
+                <li>¿Cuáles son los principales riesgos de liquidez identificados?</li>
+            </ol>
+        </div>
+    </details>
+
+
+    <div class="conclusion-box">
+        <h2>Conclusión General</h2>
+        <p style="text-align: justify;">Como grupo, consideramos que la elaboración de un Plan de Negocios es fundamental para cualquier emprendimiento, ya que permite organizar las ideas, establecer objetivos claros y analizar la viabilidad del proyecto antes de realizar inversiones importantes. Además, ayuda a prever riesgos, administrar adecuadamente los recursos y tomar decisiones más acertadas basados en datos estructurados y no en intuiciones. También constituye una herramienta útil para presentar una propuesta de negocio a posibles socios o inversores. En conclusión, un Plan de Negocios aumenta sustancialmente las posibilidades de éxito de un emprendimiento porque proporciona una guía clara, estratégica e indispensable para su desarrollo y crecimiento orgánico.</p>
+    </div>
+
+    <footer>
+        <p>Material educativo adaptado con base en el Manual del Emprendedor - Ministerio de Desarrollo Económico</p>
+    </footer>
+</div>
+
+<script>
+    window.onbeforeprint = function() {
+        const detailsElements = document.querySelectorAll('.content-details');
+        detailsElements.forEach(details => {
+            details.setAttribute('data-was-open', details.open);
+            details.open = true; 
+        });
+    };
+
+    window.onafterprint = function() {
+        const detailsElements = document.querySelectorAll('.content-details');
+        detailsElements.forEach(details => {
+            const wasOpen = details.getAttribute('data-was-open') === 'true';
+            details.open = wasOpen;
+            details.removeAttribute('data-was-open');
+        });
+    };
+</script>
+
+</body>
+</html>
